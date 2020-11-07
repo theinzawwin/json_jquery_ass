@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+         <script type="text/javascript" src="account_list.json"></script>
+        <script>
+            
+            $(document).ready(function(){
+               
+                showAccountList();
+            });
+            function createAccount(){
+                var name=$("#name").val();
+                var amt=$("#amount").val();
+                var acc={name:name,amount:amt};
+                accountList.push(acc);
+                alert('account list '+accountList.length);
+                showAccountList();
+            }
+            function showAccountList(){
+                $("#accList").empty();
+                accountList.forEach(function(val,i){
+                    $("#accList").append(
+                        '<tr>'
+                            +'<td>'+val.name+'</td>'
+                            +'<td>'+val.amount+'</td>'
+                        +'</tr>'
+                    );
+                });
+            }
+        </script>
+        </head>
+        <body>
+            <h3>Test Json</h3>
+            <div>
+                <label>Name:</label><input type="text" id="name" /><br>
+                <label>Balance:</label><input type="number" id="amount" />
+                <br>
+                <button onclick="createAccount();">Create</button>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Amount</td>
+                        </tr>
+                    </thead>
+                    <tbody id="accList">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </body>
+
+</html>
